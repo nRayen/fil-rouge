@@ -1,10 +1,7 @@
-import Button from "@/components/Button";
-import SignInForm from "@/components/SignUpForm";
-
 export default function Home() {
 	return (
 		<>
-			<SignInForm />
+			<h1 className="text-7xl m-auto">Appli</h1>
 		</>
 	);
 }

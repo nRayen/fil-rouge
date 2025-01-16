@@ -7,24 +7,22 @@ const bcrypt = require('bcrypt')
 export async function POST(request) {
     const {pseudo, firstname, lastname, email, password, birthday, sex} = await request.json()
 
-
-    try {
-        const existingEmailCheck = await prisma.uSERS.findUnique({
-            where: {
-                email : email
-            }
-        })
-        if(existingEmailCheck) {
-            return NextResponse.json()
+    // Vérifier si le mail existe
+    const existingEmailCheck = await prisma.uSERS.findUnique({
+        where: {
+            email : email
         }
-    } catch (error) {
-
+    })
+    if(existingEmailCheck) {
+        return NextResponse.json(
+            {error : "Utilisateur déjà existant", code : 409},
+            {status : 409}) // Code HTTP : CONFLICT
     }
 
+    // Hasher le mot de passe
     const hashedPwd = await bcrypt.hash(password, 10)
 
-
-
+    // Création dans la base de données
     try {
         await prisma.uSERS.create({
             data : {
@@ -37,11 +35,19 @@ export async function POST(request) {
                 sex,
             }
         })
+
+        return NextResponse.json(
+            { message: "Utilisateur ajouté avec succès" },
+            { status: 201 } // Code HTTP : CREATION
+        )
+
+    // Gestion erreur inconnue
     } catch (error) {
-        console.error(error.message)
+        console.error("Erreur lors de la création de l'utilisateur :", error);
+        
+        return NextResponse.json(
+            { error: "Erreur interne du serveur", code: 500 },
+            { status: 500 } // Code HTTP : ERREUR SERVEUR
+        )
     }
-    return NextResponse.json({
-        message : "Utilisateur ajouté",
-        status : 200
-    })
 }

@@ -30,12 +30,16 @@ const SignInForm = () => {
 
     return (
 
-        <form onSubmit={handleSubmit} className="w-1/2 min-w-80 mx-auto bg-neutral-900 p-8 rounded-3xl shadow-blue-500/10 shadow-xl">
+        <form onSubmit={handleSubmit} className="w-full max-w-550px min-w-80 mx-auto bg-neutral-900 p-8 rounded-3xl shadow-blue-500/10 shadow-xl">
+        <h2 className="text-center text-5xl mb-3">Titre</h2>
+
+        {/* Pseudo */}
         <div className="mb-4">
             <label className="block text-base font-medium mb-2" htmlFor="pseudo">Pseudo<span className="text-red-600">*</span></label>
             <input className="text-black py-2 px-4 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" type="text" name="pseudo" id="pseudo" required />
         </div>
 
+        {/* Mot de passe */}
         <div className="mb-4">
             <label className="block text-base font-medium mb-2" htmlFor="password">Mot de passe<span className="text-red-600">*</span></label>
             <input className="text-black py-2 px-4 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" type="password" name="password" id="password" />
