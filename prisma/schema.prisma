@@ -15,7 +15,7 @@ model test {
 
 model USERS {
   id         Int       @id(map: "USER_pkey") @default(autoincrement())
-  pseudo     String    @db.VarChar(50)
+  pseudo     String    @unique @db.VarChar(50)
   firstname  String    @db.VarChar(50)
   lastname   String    @db.VarChar(50)
   email      String    @unique(map: "USER_email_key") @db.VarChar(100)

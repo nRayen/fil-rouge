@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const SignUpForm = () => {
     const [errorList, setErrorList] = useState([])
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrorList([])
@@ -45,7 +45,7 @@ const SignUpForm = () => {
     };
 
   return (
-    <form onSubmit={handleSubmit}  id="signup-form" className="w-550px min-w-80 mx-auto bg-neutral-900 p-8 rounded-3xl shadow-blue-500/10 shadow-xl">
+    <form onSubmit={handleSubmit}  id="signup-form" className="w-[550px] min-w-80 mx-auto bg-neutral-900 p-8 rounded-3xl shadow-blue-500/10 shadow-xl">
 
         {/* Titre */}
         <h2 className="text-center text-5xl mb-3">Titre</h2>
@@ -76,13 +76,13 @@ const SignUpForm = () => {
         <hr className="backdrop-blur-2xl h-2px opacity-35 bg-slate-300 w-full mb-4 mt-6"></hr>
 
         {/* Nom + Prénom */}
-        <section className="flex justify-between gap-8">
-            <div className="mb-4 w-1/2">
+        <section className="flex justify-between gap-8 flex-wrap">
+            <div className="mb-4 w-[227px] min-w-16">
                 <label className="block text-base font-medium mb-2" htmlFor="firstname">Prénom<span className="text-red-600">*</span></label>
                 <input className="text-black py-2 px-4 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" type="text" name="firstname" id="firstname" required />
             </div>
 
-            <div className="mb-4 w-1/2">
+            <div className="mb-4 w-[227px]">
                 <label className="block text-base font-medium mb-2" htmlFor="lastname">Nom<span className="text-red-600">*</span></label>
                 <input className="text-black py-2 px-4 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" type="text" name="lastname" id="lastname" required />
             </div>
