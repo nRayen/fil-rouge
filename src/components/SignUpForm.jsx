@@ -7,19 +7,27 @@ import { useState } from "react";
 const SignUpForm = () => {
     const [errorList, setErrorList] = useState([])
 
+    const [pseudo, setPseudo] = useState("")
+    const [firstname, setFirstname] = useState("")
+    const [lastname, setLastname] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [birthday, setBirthday] = useState("")
+    const [sex, setSex] = useState("")
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrorList([])
-        
+
         // Récupération données formulaire
         const newUser = {
-            pseudo: document.getElementById("pseudo").value.trim(),
-            firstname: document.getElementById("firstname").value.trim(),
-            lastname: document.getElementById("lastname").value.trim(),
-            email: document.getElementById("email").value.trim(),
-            password: document.getElementById("password").value.trim(),
-            birthday : new Date(document.getElementById("birthday").value).toISOString() || null,
-            sex : document.getElementById("sex").value || null
+            pseudo: pseudo.trim(),
+            firstname: firstname.trim(),
+            lastname: lastname.trim(),
+            email: email.trim(),
+            password: password.trim(),
+            birthday :  birthday ? new Date(birthday).toISOString() : null,
+            sex : sex || null
         }
 
         // Requête API pour créer l'utilisateur
@@ -59,33 +67,33 @@ const SignUpForm = () => {
         {/* Pseudo */}
         <div className="mb-4">
             <label className="block text-base font-medium mb-2" htmlFor="pseudo">Pseudo<span className="text-red-600">*</span></label>
-            <input className="text-black py-2 px-4 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" type="text" name="pseudo" id="pseudo" required />
+            <input className="text-black py-2 px-4 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" value={pseudo} onChange={(e) => setPseudo(e.target.value)} type="text" name="pseudo" id="pseudo" required />
         </div>
 
         {/* Email */}
         <div className="mb-4">
             <label className="block text-base font-medium mb-2" htmlFor="email">Email<span className="text-red-600">*</span></label>
-            <input className="text-black py-2 px-4 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" type="email" name="email" id="email" required />
+            <input className="text-black py-2 px-4 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="email" id="email" required />
         </div>
 
         {/* Mot de passe */}
         <div className="mb-4">
             <label className="block text-base font-medium mb-2" htmlFor="password">Mot de passe<span className="text-red-600">*</span></label>
-            <input className="text-black py-2 px-4 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" type="password" name="password" id="password" />
+            <input className="text-black py-2 px-4 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" value={password} onChange={(e) => setPassword(e.target.value)} type="password" name="password" id="password" />
         </div>
 
         <hr className="backdrop-blur-2xl h-2px opacity-35 bg-slate-300 w-full mb-4 mt-6"></hr>
 
         {/* Nom + Prénom */}
-        <section className="flex justify-between gap-8 flex-wrap">
+        <section className="flex justify-between gap-8">
             <div className="mb-4 w-[227px] min-w-16">
                 <label className="block text-base font-medium mb-2" htmlFor="firstname">Prénom<span className="text-red-600">*</span></label>
-                <input className="text-black py-2 px-4 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" type="text" name="firstname" id="firstname" required />
+                <input className="text-black py-2 px-4 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" value={firstname} onChange={(e) => setFirstname(e.target.value)} type="text" name="firstname" id="firstname" required />
             </div>
 
             <div className="mb-4 w-[227px]">
                 <label className="block text-base font-medium mb-2" htmlFor="lastname">Nom<span className="text-red-600">*</span></label>
-                <input className="text-black py-2 px-4 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" type="text" name="lastname" id="lastname" required />
+                <input className="text-black py-2 px-4 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" value={lastname} onChange={(e) => setLastname(e.target.value)} type="text" name="lastname" id="lastname" required />
             </div>
         </section>
 
@@ -93,12 +101,12 @@ const SignUpForm = () => {
         <section className="flex justify-between gap-8">
             <div className="mb-4 w-1/2">
                 <label className="block text-base font-medium mb-2" htmlFor="birthday">Date de naissance</label>
-                <input className="text-black py-2 px-4 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" type="date" name="birthday" id="birthday" />
+                <input className="text-black py-2 px-4 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" value={birthday} onChange={(e) => setBirthday(e.target.value)} type="date" name="birthday" id="birthday" />
             </div>
 
-            <div className="mb-4 w-1/2">
+            <div className="mb-4 w-1/2 flex-shrink">
                 <label className="block text-base font-medium mb-2" htmlFor="sex">Sexe</label>
-                <select name="sex" defaultValue={null} id="sex" className="text-black py-3 px-4 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
+                <select name="sex" value={sex} onChange={(e) => setSex(e.target.value)} id="sex" className="text-black py-3 px-4 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
                     <option value={null}>Choisissez une option</option>
                     <option value="h">Homme</option>
                     <option value="f">Femme</option>
