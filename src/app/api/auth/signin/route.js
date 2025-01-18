@@ -6,50 +6,50 @@ const bcrypt = require('bcrypt')
 // Route pour vérifier les informations de connexion
 export async function POST(request) {
     const {userLogin, password} = await request.json()
-    console.log(userLogin + password)
-    // Hasher le mot de passe
-    const hashedPwd = await bcrypt.hash(password, 10)
 
-    // Vérifier si le login est bon
     try {
-
+        // Vérifier si le login est bon et récupérer le mdp
         const userLoginCheck = await prisma.uSERS.findUnique({
             where: {
-                OR: [
-                    {
-                        email : userLogin,
-                        password: hashedPwd
-                    },
-                    {
-                        pseudo : userLogin,
-                        password: hashedPwd
-                    }
-                ]
+                    pseudo : userLogin,
+                },
+            select : {
+                password : true
             }
-        })
+            })
 
-        // const userLoginCheck = await prisma.uSERS.findFirst({
-        //     where : {
-        //         pseudo : userLogin
-        //     }
-        // })
-
-        // Renvoyer erreur si les info ne sont pas valides
+        // Renvoyer erreur si le pseudo n'est pas connu
         if(!userLoginCheck) {
-            console.log("rien")
             return NextResponse.json(
-                {error : "Nom d'utilisateur ou mot de passe incorrect", code : 401},
+                {error : "Nom d'utilisateur et/ou mot de passe incorrect", code : 401},
                 {status : 401}) // Code HTTP : UNAUTHORIZED
-        } else {
-            // alert("Réussite : implémentation JWT session")
+        }
+
+        // Vérifier si le mot de passe est correct
+        let passwordCheck = await bcrypt.compare(password, userLoginCheck.password).then(function(result) {
+            return result
+        });
+
+        // Vérifier si on autorise la connexion
+        if (passwordCheck && userLoginCheck) {
             return NextResponse.json(
-                { message: "Utilisateur ajouté avec succès" },
+                { message: "Bons identifiants + ...Création session" },
                 { status: 201 } // Code HTTP : CREATION
+            )
+        } else {
+            return NextResponse.json(
+                { error: "Nom d'utilisateur et/ou mot de passe incorrect", code : 401 },
+                { status: 401 } // Code HTTP : UNAUTHORIZED
             )
         }
 
     } catch (error) {
+        console.error("Erreur lors de la connexion de l'utilisateur :", error);
 
+        return NextResponse.json(
+            { error: "Erreur interne du serveur", code: 500 },
+            { status: 500 } // Code HTTP : ERREUR SERVEUR
+        )
     }
 
 

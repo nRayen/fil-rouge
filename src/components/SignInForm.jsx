@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import FormError from "./FormError";
 
 const SignInForm = () => {
     const [errorList, setErrorList] = useState([])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setErrorList([])
 
         // Récupération infos de login
         const loginInfo = {
@@ -43,6 +45,11 @@ const SignInForm = () => {
 
         <form onSubmit={handleSubmit} className="w-[550px] min-w-80 mx-auto bg-neutral-900 p-8 rounded-3xl shadow-blue-500/10 shadow-xl">
         <h2 className="text-center text-5xl mb-3">Titre</h2>
+
+        {/* Affichage des erreurs */}
+        {
+            errorList.map((err, ind) => <FormError error={err} key={ind}/>)
+        }
 
         {/* Pseudo */}
         <div className="mb-4">

@@ -6,10 +6,11 @@ import { useState } from "react";
 
 const SignUpForm = () => {
     const [errorList, setErrorList] = useState([])
-    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrorList([])
+        
         // Récupération données formulaire
         const newUser = {
             pseudo: document.getElementById("pseudo").value.trim(),
