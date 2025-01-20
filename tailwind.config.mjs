@@ -20,7 +20,7 @@ export default {
         },
         text: {
           primary: "#FFFFFF",
-          secondary: "color :#8996A9"
+          secondary: "#8996A9"
         }
       },
       fontFamily: {

@@ -133,7 +133,7 @@ const SignUpForm = () => {
 
 
 
-    <form className="max-w-[687px] w-full rounded-2xl sm:px-12 sm:py-10 sm:bg-white/10 sm:stroke-white/5" onSubmit={handleSubmit}>
+    <form className="max-w-[687px] w-full rounded-2xl my-auto sm:px-12 sm:py-10 sm:bg-white/10 sm:stroke-white/5" onSubmit={handleSubmit}>
         <h2 className="text-center text-2xl pb-8 mb-8 border-b-[1px] border-white/10">Titre</h2>
         <div className="flex flex-col gap-6" >
             {/* Nom + Prénom */}
