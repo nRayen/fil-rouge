@@ -9,8 +9,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        background: {
+          DEFAULT: "#0E0F11"
+        },
+        foreground: {
+          DEFAULT: "#FFFFFF"
+        },
+        primary: {
+          DEFAULT: "#ECF15E"
+        },
+        text: {
+          primary: "#FFFFFF",
+          secondary: "color :#8996A9"
+        }
       },
       fontFamily: {
         montreal: ['NeueMontreal', 'sans-serif'],

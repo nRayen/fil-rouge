@@ -133,65 +133,74 @@ const SignUpForm = () => {
 
 
 
-    <form className="max-w-[687px] w-full flex flex-col gap-6" onSubmit={handleSubmit} >
-        {/* Nom + Prénom */}
-        <section className="grid grid-cols-2 gap-x-3 gap-y-2">
-            <label htmlFor="firstname">Prénom</label>
-            <label htmlFor="lastname">Nom</label>
+    <form className="max-w-[687px] w-full rounded-2xl sm:px-12 sm:py-10 sm:bg-white/10 sm:stroke-white/5" onSubmit={handleSubmit}>
+        <h2 className="text-center text-2xl pb-8 mb-8 border-b-[1px] border-white/10">Titre</h2>
+        <div className="flex flex-col gap-6" >
+            {/* Nom + Prénom */}
+            <section className="grid grid-cols-2 gap-x-3 gap-y-2">
+                <label htmlFor="firstname">Prénom</label>
+                <label htmlFor="lastname">Nom</label>
 
-            <div className="group w-full flex bg-white/10 border-[1px] border-white/5 h-11 px-4 py-3 gap-3 rounded-md focus-within:border-b-[#ECF15E] transition-colors ease-in-out duration-500">
-                <FirstnameSVG className="h-full"/>
-                <input value={firstname} onChange={(e) => setFirstname(e.target.value)} type="text" name="firstname" id="firstname" placeholder="Prénom" required className="text-sm placeholder:text-white/30 bg-transparent disabled:pointer-events-none w-full focus:outline-none caret-[#ECF15E]" />
-            </div>
+                <div className="group w-full flex bg-white/10 border-[1px] border-white/5 h-11 px-4 py-3 gap-3 rounded-md focus-within:border-b-primary transition-colors ease-in-out duration-500">
+                    <FirstnameSVG className="h-full"/>
+                    <input value={firstname} onChange={(e) => setFirstname(e.target.value)} type="text" name="firstname" id="firstname" placeholder="Prénom" required className="text-sm placeholder:text-white/30 bg-transparent disabled:pointer-events-none w-full focus:outline-none caret-primary" />
+                </div>
 
-            <div className="group w-full flex bg-white/10 border-[1px] border-white/5 h-11 px-4 py-3 gap-3 rounded-md focus-within:border-b-[#ECF15E] transition-colors ease-in-out duration-500">
-                <LastnameSVG className="h-full"/>
-                <input value={lastname} onChange={(e) => setLastname(e.target.value)} type="text" name="lastname" id="lastname" placeholder="Nom" required className="text-sm placeholder:text-white/30 bg-transparent disabled:pointer-events-none w-full focus:outline-none caret-[#ECF15E]" />
-            </div>
-        </section>
+                <div className="group w-full flex bg-white/10 border-[1px] border-white/5 h-11 px-4 py-3 gap-3 rounded-md focus-within:border-b-primary transition-colors ease-in-out duration-500">
+                    <LastnameSVG className="h-full"/>
+                    <input value={lastname} onChange={(e) => setLastname(e.target.value)} type="text" name="lastname" id="lastname" placeholder="Nom" required className="text-sm placeholder:text-white/30 bg-transparent disabled:pointer-events-none w-full focus:outline-none caret-primary" />
+                </div>
+            </section>
 
-        {/* Pseudo */}
-        <section className="flex flex-col gap-2">
-            <label htmlFor="pseudo">Pseudo</label>
-            <div className="group w-full flex bg-white/10 border-[1px] border-white/5 h-11 px-4 py-3 gap-3 rounded-md focus-within:border-b-[#ECF15E] transition-colors ease-in-out duration-500">
-                <PseudoSVG className="h-full"/>
-                <input value={pseudo} onChange={(e) => setPseudo(e.target.value)} type="text" name="pseudo" id="pseudo" placeholder="Pseudo" required className="text-sm placeholder:text-white/30 bg-transparent disabled:pointer-events-none w-full focus:outline-none caret-[#ECF15E]" />
-            </div>
-        </section>
-
-
-        {/* Email */}
-        <section className="flex flex-col gap-2">
-            <label htmlFor="email">Email</label>
-            <div className="group w-full flex bg-white/10 border-[1px] border-white/5 h-11 px-4 py-3 gap-3 rounded-md focus-within:border-b-[#ECF15E] transition-colors ease-in-out duration-500">
-                <EmailSVG className="h-full"/>
-                <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" name="email" id="email" placeholder="Email" required className="text-sm placeholder:text-white/30 bg-transparent disabled:pointer-events-none w-full focus:outline-none caret-[#ECF15E]" />
-            </div>
-        </section>
+            {/* Pseudo */}
+            <section className="flex flex-col gap-2">
+                <label htmlFor="pseudo">Pseudo</label>
+                <div className="group w-full flex bg-white/10 border-[1px] border-white/5 h-11 px-4 py-3 gap-3 rounded-md focus-within:border-b-primary transition-colors ease-in-out duration-500">
+                    <PseudoSVG className="h-full"/>
+                    <input value={pseudo} onChange={(e) => setPseudo(e.target.value)} type="text" name="pseudo" id="pseudo" placeholder="Pseudo" required className="text-sm placeholder:text-white/30 bg-transparent disabled:pointer-events-none w-full focus:outline-none caret-primary" />
+                </div>
+            </section>
 
 
-        {/* Mot de passe */}
-        <section className="flex flex-col gap-2">
-            <label htmlFor="password">Mot de passe</label>
-            <div className="group w-full flex bg-white/10 border-[1px] border-white/5 h-11 px-4 py-3 gap-3 rounded-md focus-within:border-b-[#ECF15E] transition-colors ease-in-out duration-500">
-                <PasswordSVG className="h-full"/>
-                <input value={password} onChange={(e) => setPassword(e.target.value)} type={showPassword ? "password" : "text"} name="password" id="password" placeholder="Mot de passe" required className="text-sm placeholder:text-white/30 bg-transparent disabled:pointer-events-none w-full focus:outline-none caret-[#ECF15E]" />
-                <button type="button" onClick={() => setShowPassword(!showPassword)}>
-                    {
-                        showPassword ? (
-                            <EyeClosedSVG  className="cursor-pointer hover:stroke-[#ECF15E] stroke-white"/>
-                        ) : (
-                            <EyeOpenSVG  className="cursor-pointer hover:stroke-[#ECF15E] stroke-white"/>
-                        )
-                    }
-                </button>
-            </div>
-            <div>
-                Robustesse du mot de passe
-            </div>
-            <div className="w-full h-0.5 bg-white"></div>
-        </section>
-        <button type="submit" className="text-2xl font-medium text-[#0E0F11] py-3 rounded-lg bg-gradient-to-b from-[#ECF15E] to-[#D6DD13]">S'inscire</button>
+            {/* Email */}
+            <section className="flex flex-col gap-2">
+                <label htmlFor="email">Email</label>
+                <div className="group w-full flex bg-white/10 border-[1px] border-white/5 h-11 px-4 py-3 gap-3 rounded-md focus-within:border-b-primary transition-colors ease-in-out duration-500">
+                    <EmailSVG className="h-full"/>
+                    <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" name="email" id="email" placeholder="Email" required className="text-sm placeholder:text-white/30 bg-transparent disabled:pointer-events-none w-full focus:outline-none caret-primary" />
+                </div>
+            </section>
+
+
+            {/* Mot de passe */}
+            <section className="flex flex-col gap-2">
+                <label htmlFor="password">Mot de passe</label>
+                <div className="group w-full flex bg-white/10 border-[1px] border-white/5 h-11 px-4 py-3 gap-3 rounded-md focus-within:border-b-primary transition-colors ease-in-out duration-500">
+                    <PasswordSVG className="h-full"/>
+                    <input value={password} onChange={(e) => setPassword(e.target.value)} type={showPassword ? "password" : "text"} name="password" id="password" placeholder="Mot de passe" required className="text-sm placeholder:text-white/30 bg-transparent disabled:pointer-events-none w-full focus:outline-none caret-primary" />
+                    <button type="button" onClick={() => setShowPassword(!showPassword)}>
+                        {
+                            showPassword ? (
+                                <EyeClosedSVG  className="cursor-pointer hover:stroke-primary stroke-white"/>
+                            ) : (
+                                <EyeOpenSVG  className="cursor-pointer hover:stroke-primary stroke-white"/>
+                            )
+                        }
+                    </button>
+                </div>
+                <div className="text-secondary">Robustesse du mot de passe</div>
+                <div className="w-full h-0.5 bg-white"></div>
+            </section>
+
+            {/* Bouton submit */}
+            <button type="submit" className="text-2xl font-medium text-[#0E0F11] py-3 rounded-lg bg-gradient-to-b from-primary to-[#D6DD13]">S'inscrire</button>
+
+            {/* ToS */}
+            <p className="text-sm text-text-secondary">En créant un compte, vous acceptez les <Link href={"/tos"} className="text-white underline">Conditions d'utilisation</Link>. Nous vous enverrons occasionnellement des e-mails liés à votre compte </p>
+        </div>
+
+        {/* Login */}
+        <p className="text-sm text-center mt-8">Vous avez déjâ un compte ? <Link className="text-primary hover:underline" href={"/signin"}>Connexion</Link></p>
     </form>
   )
 }
