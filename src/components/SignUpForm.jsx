@@ -133,9 +133,9 @@ const SignUpForm = () => {
 
 
 
-    <form className="max-w-[687px] w-full rounded-2xl my-auto sm:px-12 sm:py-10 sm:bg-white/10 sm:stroke-white/5" onSubmit={handleSubmit}>
-        <h2 className="text-center text-2xl pb-8 mb-8 border-b-[1px] border-white/10">Titre</h2>
-        <div className="flex flex-col gap-6" >
+    <form className="max-w-[512px] w-full rounded-xl my-auto sm:px-10 sm:py-8 sm:bg-white/10 sm:stroke-white/5" onSubmit={handleSubmit}>
+        {/* <h2 className="text-center text-2xl pb-8 mb-8 border-b-[1px] border-white/10">Titre</h2> */}
+        <div className="flex flex-col gap-4" >
             {/* Nom + Prénom */}
             <section className="grid grid-cols-2 gap-x-3 gap-y-2">
                 <label htmlFor="firstname">Prénom</label>
@@ -193,7 +193,7 @@ const SignUpForm = () => {
             </section>
 
             {/* Bouton submit */}
-            <button type="submit" className="text-2xl font-medium text-[#0E0F11] py-3 rounded-lg bg-gradient-to-b from-primary to-[#D6DD13]">S'inscrire</button>
+            <button type="submit" className="text-2xl font-medium text-[#0E0F11] py-2 rounded-lg bg-gradient-to-b from-primary to-primary">S'inscrire</button>
 
             {/* ToS */}
             <p className="text-sm text-text-secondary">En créant un compte, vous acceptez les <Link href={"/tos"} className="text-white underline">Conditions d'utilisation</Link>. Nous vous enverrons occasionnellement des e-mails liés à votre compte </p>

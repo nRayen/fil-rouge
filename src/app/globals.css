@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* * {
+  border: 1px solid red;
+} */
+
 @font-face {
   font-family: 'NeueMontreal';
   src: url('/fonts/NeueMontreal-Regular.woff2') format('woff2');

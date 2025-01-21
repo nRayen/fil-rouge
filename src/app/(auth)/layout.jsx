@@ -14,23 +14,23 @@ export default function AuthLayout({ children }) {
 
 
 			{/* Background */}
-			<div className="z-0 absolute top-0 left-1/2 translate-x-[-50%] h-full overflow-hidden w-screen">
+			<div className="z-0 absolute top-0 left-1/2 translate-x-[-50%] h-full overflow-hidden w-full">
 				{/* Background yellow gradient */}
 				<div
 					className="pointer-events-none
                           w-1/2 aspect-square min-w-[1250px]
                           absolute top-[-70%] right-1/2
-                          bg-[#ecf15e41] blur-[150px] rounded-full
+                          bg-primary/20 blur-[150px] rounded-full
                           translate-x-1/2 rotate-45"
 				></div>
 
 				{/* Grid */}
-				<GridSVG className="z--10 object-contain right-1/2 translate-x-[50%] absolute"/>
-				
+				<GridSVG className="z--10 object-contain right-1/2 translate-x-[50%] absolute stroke-primary"/>
+
         		{/* Black filters */}
 				<div className="absolute w-full h-full bg-gradient-to-t from-background via-background via-70%"></div>
-				<div className="absolute w-full h-full bg-gradient-to-r from-background to-transparent via-transparent via-30%"></div>
-				<div className="absolute w-full h-full bg-gradient-to-l from-background to-transparent via-transparent via-30%"></div>
+				<div className="absolute w-full h-full lg:bg-gradient-to-r from-background to-transparent via-transparent via-30%"></div>
+				<div className="absolute w-full h-full lg:bg-gradient-to-l from-background to-transparent via-transparent via-30%"></div>
 
 			</div>
 		</div>

@@ -16,7 +16,9 @@ export default {
           DEFAULT: "#FFFFFF"
         },
         primary: {
-          DEFAULT: "#ECF15E"
+          // DEFAULT: "#ECF15E"
+          DEFAULT: "#4CAF50"
+          // DEFAULT: "#FF2200"
         },
         text: {
           primary: "#FFFFFF",
